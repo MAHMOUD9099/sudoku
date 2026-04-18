@@ -146,6 +146,7 @@ body {
     color: #fff;
     padding: 7px 9px;
     border-radius: 10px;
+    border: none;
 }
 
 .active {
