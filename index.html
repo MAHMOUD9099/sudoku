@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Soduko Game | M-Prog</title>
+</head>
+
+<body>
+    <div class="big-row">
+        <div class="table-container table1">
+            <div class="rows">
+                <div class="inputs row1 coulmn1 default">6</div>
+                <div class="inputs row1 coulmn2 default">8</div>
+                <div class="inputs row1 coulmn3">5</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row2 coulmn1">1</div>
+                <div class="inputs row2 coulmn2">4</div>
+                <div class="inputs row2 coulmn3 default">7</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row3 coulmn1">9</div>
+                <div class="inputs row3 coulmn2">3</div>
+                <div class="inputs row3 coulmn3 default">2</div>
+            </div>
+        </div>
+        <div class="table-container table2">
+            <div class="rows">
+                <div class="inputs row1 coulmn4">2</div>
+                <div class="inputs row1 coulmn5">1</div>
+                <div class="inputs row1 coulmn6 default">3</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row2 coulmn4">6</div>
+                <div class="inputs row2 coulmn5">8</div>
+                <div class="inputs row2 coulmn6 default">9</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row3 coulmn4">7</div>
+                <div class="inputs row3 coulmn5">5</div>
+                <div class="inputs row3 coulmn6">4</div>
+            </div>
+        </div>
+        <div class="table-container table3">
+            <div class="rows">
+                <div class="inputs row1 coulmn7">7</div>
+                <div class="inputs row1 coulmn8">9</div>
+                <div class="inputs row1 coulmn9 default">4</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row2 coulmn7 default">2</div>
+                <div class="inputs row2 coulmn8 default">5</div>
+                <div class="inputs row2 coulmn9">3</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row3 coulmn7">6</div>
+                <div class="inputs row3 coulmn8">8</div>
+                <div class="inputs row3 coulmn9">1</div>
+            </div>
+        </div>
+    </div>
+    <div class="big-row">
+        <div class="table-container table4">
+            <div class="rows">
+                <div class="inputs row4 coulmn1 default">3</div>
+                <div class="inputs row4 coulmn2">9</div>
+                <div class="inputs row4 coulmn3">6</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row5 coulmn1">5</div>
+                <div class="inputs row5 coulmn2">1</div>
+                <div class="inputs row5 coulmn3">4</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row6 coulmn1">2</div>
+                <div class="inputs row6 coulmn2">7</div>
+                <div class="inputs row6 coulmn3 default">8</div>
+            </div>
+        </div>
+        <div class="table-container table5">
+            <div class="rows">
+                <div class="inputs row4 coulmn4">5</div>
+                <div class="inputs row4 coulmn5 default">7</div>
+                <div class="inputs row4 coulmn6">8</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row5 coulmn4">9</div>
+                <div class="inputs row5 coulmn5 default">6</div>
+                <div class="inputs row5 coulmn6">2</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row6 coulmn4 default">3</div>
+                <div class="inputs row6 coulmn5">4</div>
+                <div class="inputs row6 coulmn6">1</div>
+            </div>
+        </div>
+        <div class="table-container table6">
+            <div class="rows">
+                <div class="inputs row4 coulmn7 default">1</div>
+                <div class="inputs row4 coulmn8">4</div>
+                <div class="inputs row4 coulmn9">2</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row5 coulmn7">8</div>
+                <div class="inputs row5 coulmn8">3</div>
+                <div class="inputs row5 coulmn9">7</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row6 coulmn7">9</div>
+                <div class="inputs row6 coulmn8">6</div>
+                <div class="inputs row6 coulmn9 default">5</div>
+            </div>
+        </div>
+    </div>
+    <div class="big-row">
+        <div class="table-container table7">
+            <div class="rows">
+                <div class="inputs row7 coulmn1 default">7</div>
+                <div class="inputs row7 coulmn2">6</div>
+                <div class="inputs row7 coulmn3">1</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row8 coulmn1">8</div>
+                <div class="inputs row8 coulmn2">5</div>
+                <div class="inputs row8 coulmn3 default">3</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row9 coulmn1">4</div>
+                <div class="inputs row9 coulmn2 default">2</div>
+                <div class="inputs row9 coulmn3 default">9</div>
+            </div>
+        </div>
+        <div class="table-container table8">
+            <div class="rows">
+                <div class="inputs row7 coulmn4">4</div>
+                <div class="inputs row7 coulmn5">9</div>
+                <div class="inputs row7 coulmn6">5</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row8 coulmn4">1</div>
+                <div class="inputs row8 coulmn5 default">2</div>
+                <div class="inputs row8 coulmn6 default">6</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row9 coulmn4"></div>
+                <div class="inputs row9 coulmn5">3</div>
+                <div class="inputs row9 coulmn6">7</div>
+            </div>
+        </div>
+        <div class="table-container table9">
+            <div class="rows">
+                <div class="inputs row7 coulmn7">3</div>
+                <div class="inputs row7 coulmn8 default">2</div>
+                <div class="inputs row7 coulmn9">8</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row8 coulmn7">4</div>
+                <div class="inputs row8 coulmn8 default">7</div>
+                <div class="inputs row8 coulmn9">9</div>
+            </div>
+            <div class="rows">
+                <div class="inputs row9 coulmn7 default">5</div>
+                <div class="inputs row9 coulmn8">1</div>
+                <div class="inputs row9 coulmn9">6</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="numbers-container">
+        <div class="num num1">
+            1
+        </div>
+        <div class="num num2">
+            2
+        </div>
+        <div class="num num3">
+            3
+        </div>
+        <div class="num num4">
+            4
+        </div>
+        <div class="num num5">
+            5
+        </div>
+        <div class="num num6">
+            6
+        </div>
+        <div class="num num7">
+            7
+        </div>
+        <div class="num num8">
+            8
+        </div>
+        <div class="num num9">
+            9
+        </div>
+        <div class="num num0"></div>
+    </div>
+
+    <div class="blur-container"></div>
+    <div class="card-container">
+        <div class="card">
+            <h2>Congratulations! 🎉</h2>
+            <p>You Won the Game 🥳</p>
+            <button id="rst">Play Again</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

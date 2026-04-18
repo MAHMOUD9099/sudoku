@@ -1,0 +1,201 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    position: relative;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    user-select: none;
+}
+
+.table-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+}
+
+.table-container .rows {
+    display: flex;
+    gap: 12px;
+}
+
+.big-row {
+    display: flex;
+    gap: 12px;
+}
+
+.table-container .rows .inputs {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    color: #1b657a;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 320px;
+    gap: 12px;
+    padding: 12px;
+}
+
+.numbers-container div {
+    color: #1b657a;
+    font-weight: bold;
+    width: 42px;
+    height: 42px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+.table-container .rows .inputs.mistake {
+    background-color: rgba(255, 0, 0, 0.4);
+    color: #000;
+    transition: 0.3s;
+}
+
+.table-container .rows .inputs.clicked {
+    background-color: rgba(0, 0, 255, 0.4);
+    transition: 0.3s;
+    color: #000;
+}
+
+.table-container .rows .inputs {
+    cursor: pointer;
+}
+
+.numbers-container .num {
+    cursor: pointer;
+}
+
+.table-container .rows .inputs.default {
+    background-color: #cac2c2;
+    color: #0e88aa;
+}
+
+.card-container {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    display: none;
+}
+
+.blur-container {
+    display: none;
+    top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    filter: blur(1px);
+}
+
+.card-container .card {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    height: 250px;
+    background-color: #555;
+    border-radius: 20px;
+    color: #fff;
+    z-index: 200;
+}
+
+.card-container .card h2 {
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.card-container .card p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.card-container .card button {
+    background-color: #222;
+    color: #fff;
+    padding: 7px 9px;
+    border-radius: 10px;
+}
+
+.active {
+    display: flex;
+}
+
+/* تعديل الحاويات الكبيرة لتصبح عمودية في الشاشات الصغيرة */
+@media (max-width: 600px) {
+    body {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .big-row {
+        flex-direction: row; /* الحفاظ على الصفوف الكبيرة بجانب بعضها */
+        gap: 5px;
+    }
+
+    .table-container {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .table-container .rows {
+        gap: 5px;
+    }
+
+    /* تصغير حجم الخلية لتناسب عرض الموبايل */
+    .table-container .rows .inputs {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    /* تعديل حاوية الأرقام بالأسفل */
+    .numbers-container {
+        width: 100%;
+        max-width: 320px;
+        gap: 8px;
+    }
+
+    .numbers-container div {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .card-container .card {
+        width: 90%; /* عرض البوب أب ليناسب الموبايل */
+        height: auto;
+        padding: 30px 10px;
+    }
+}
