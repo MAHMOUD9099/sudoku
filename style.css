@@ -46,6 +46,7 @@ body {
     color: #1b657a;
     font-weight: bold;
     font-size: 25px;
+    transition: 0.3s;
 }
 
 .numbers-container {
@@ -70,16 +71,19 @@ body {
     font-size: 25px;
 }
 
+.completedBg {
+    background-color: rgba(0, 255, 0, 0.4) !important;
+    color: #000 !important;
+}
+
 .table-container .rows .inputs.mistake {
-    background-color: rgba(255, 0, 0, 0.4);
-    color: #000;
-    transition: 0.3s;
+    background-color: rgba(255, 0, 0, 0.4) !important;
+    color: #000 !important;
 }
 
 .table-container .rows .inputs.clicked {
-    background-color: rgba(0, 0, 255, 0.4);
-    transition: 0.3s;
-    color: #000;
+    background-color: rgba(0, 0, 255, 0.4) !important;
+    color: #000 !important;
 }
 
 .table-container .rows .inputs {
@@ -153,7 +157,6 @@ body {
     display: flex;
 }
 
-/* تعديل الحاويات الكبيرة لتصبح عمودية في الشاشات الصغيرة */
 @media (max-width: 600px) {
     body {
         gap: 10px;
@@ -161,7 +164,7 @@ body {
     }
 
     .big-row {
-        flex-direction: row; /* الحفاظ على الصفوف الكبيرة بجانب بعضها */
+        flex-direction: row;
         gap: 5px;
     }
 
@@ -174,14 +177,12 @@ body {
         gap: 5px;
     }
 
-    /* تصغير حجم الخلية لتناسب عرض الموبايل */
     .table-container .rows .inputs {
         width: 30px;
         height: 30px;
         font-size: 18px;
     }
 
-    /* تعديل حاوية الأرقام بالأسفل */
     .numbers-container {
         width: 100%;
         max-width: 320px;
@@ -195,7 +196,7 @@ body {
     }
 
     .card-container .card {
-        width: 90%; /* عرض البوب أب ليناسب الموبايل */
+        width: 90%;
         height: auto;
         padding: 30px 10px;
     }
