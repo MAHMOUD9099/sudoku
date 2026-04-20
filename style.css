@@ -58,17 +58,23 @@ body {
     padding: 12px;
 }
 
-.numbers-container div {
+.numbers-container .num {
     color: #1b657a;
     font-weight: bold;
     width: 42px;
     height: 42px;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     font-size: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.table-container .rows .inputs:hover {
+    background-color: rgba(0, 0, 255, 0.1);
 }
 
 .completedBg {
@@ -110,8 +116,8 @@ body {
     cursor: pointer;
 }
 
-.numbers-container .num {
-    cursor: pointer;
+.numbers-container .num:hover {
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .table-container .rows .inputs.default {
