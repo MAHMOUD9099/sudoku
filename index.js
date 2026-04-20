@@ -16,20 +16,49 @@ window.onload = () => {
 
 };
 
-
 inputs.forEach((ele) => {
     if (!ele.classList.contains("default")) ele.innerHTML = "";
     ele.addEventListener("click", (e) => {
         if (ele.classList.contains("default")) return;
         if (ele.classList.contains("clicked")) {
             ele.classList.remove("clicked");
+            ele.innerHTML = ""
+            inputs.forEach(el => el.classList.remove("completedBg", "completed"));
+            for (let i = 1; i <= 9; i++) {
+                test(i);
+            }
+            inputs.forEach(el => {
+                el.classList.remove("mistake")
+                check(el)
+            });
+            let data = [];
+            inputs.forEach(el => data.push(el.innerHTML.trim()));
+            inputs.forEach((ele) => ele.classList.remove("row-coulmn"));
+            localStorage.setItem("sudoku_save", JSON.stringify(data));
+
         } else {
             inputs.forEach((ele) => {
                 ele.classList.remove("clicked");
             });
+            inputs.forEach((ele) => {
+                ele.classList.remove("row-coulmn");
+            });
             ele.classList.add("clicked");
+            addRowCoulmn(ele)
+            function addRowCoulmn(theEle) {
+                let theEleRow = document.querySelectorAll(`.${theEle.classList.item(1)}`)
+                let theElecol = document.querySelectorAll(`.${theEle.classList.item(2)}`)
+                theEleRow.forEach(el => {
+                    el.classList.add("row-coulmn")
+                })
+                theElecol.forEach(el => {
+                    el.classList.add("row-coulmn")
+                })
+                theEle.classList.remove("row-coulmn")
+            }
         }
     });
+
     check(ele)
 });
 
@@ -100,7 +129,12 @@ function youWin() {
 document.addEventListener("click", (e) => {
     if (!e.target.classList.contains("inputs")) {
         inputs.forEach((ele) => {
-            if (ele.classList.contains("clicked")) ele.classList.remove("clicked")
+            if (ele.classList.contains("clicked")) {
+                ele.classList.remove("clicked")
+            }
+            if (ele.classList.contains("row-coulmn")) {
+                ele.classList.remove("row-coulmn");
+            }
         })
     }
 })
