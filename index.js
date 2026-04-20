@@ -11,7 +11,7 @@ window.onload = () => {
         });
     }
     for (let i = 1; i <= 9; i++) {
-        test(i);
+        checkAllNumI(i);
     }
 
 };
@@ -25,7 +25,7 @@ inputs.forEach((ele) => {
             ele.innerHTML = ""
             inputs.forEach(el => el.classList.remove("completedBg", "completed"));
             for (let i = 1; i <= 9; i++) {
-                test(i);
+                checkAllNumI(i);
             }
             inputs.forEach(el => {
                 el.classList.remove("mistake")
@@ -79,7 +79,7 @@ nums.forEach((ele) => {
         localStorage.setItem("sudoku_save", JSON.stringify(data));
         inputs.forEach(el => el.classList.remove("completedBg", "completed"));
         for (let i = 1; i <= 9; i++) {
-            test(i)
+            checkAllNumI(i)
         }
         youWin()
     });
@@ -139,7 +139,7 @@ document.addEventListener("click", (e) => {
     }
 })
 
-function test(theNumber) {
+function checkAllNumI(theNumber) {
     let theTab = document.querySelectorAll(".table-container");
     let allHave = [];
     theTab.forEach(table => {
