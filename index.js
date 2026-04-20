@@ -10,7 +10,12 @@ window.onload = () => {
             check(ele);
         });
     }
+    for (let i = 1; i <= 9; i++) {
+        test(i);
+    }
+
 };
+
 
 inputs.forEach((ele) => {
     if (!ele.classList.contains("default")) ele.innerHTML = "";
@@ -43,7 +48,10 @@ nums.forEach((ele) => {
         let data = [];
         inputs.forEach(el => data.push(el.innerHTML.trim()));
         localStorage.setItem("sudoku_save", JSON.stringify(data));
-
+        inputs.forEach(el => el.classList.remove("completedBg", "completed"));
+        for (let i = 1; i <= 9; i++) {
+            test(i)
+        }
         youWin()
     });
 });
@@ -87,6 +95,38 @@ function youWin() {
         document.querySelector(".card-container").classList.add("active")
     }
 }
+
+
+document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("inputs")) {
+        inputs.forEach((ele) => {
+            if (ele.classList.contains("clicked")) ele.classList.remove("clicked")
+        })
+    }
+})
+
+function test(theNumber) {
+    let theTab = document.querySelectorAll(".table-container");
+    let allHave = [];
+    theTab.forEach(table => {
+        let tabInp = table.querySelectorAll(".inputs")
+        for (let i = 0; i < tabInp.length; i++) {
+            if (tabInp[i].innerHTML == theNumber && !tabInp[i].classList.contains("mistake")) {
+                allHave.push("have");
+                break
+            }
+        }
+    })
+    if (allHave.length === theTab.length) {
+        inputs.forEach(ele => {
+            if (ele.innerHTML == theNumber) ele.classList.add("completed")
+            if (ele.classList.contains("completed") && ele.innerHTML == theNumber) {
+                ele.classList.add("completedBg")
+            }
+        })
+    }
+}
+
 
 document.getElementById("rst").onclick = () => {
     localStorage.removeItem("sudoku_save");
