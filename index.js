@@ -1,5 +1,4 @@
 let win = false;
-
 let inputs = document.querySelectorAll(".inputs");
 
 window.onload = () => {
@@ -7,106 +6,106 @@ window.onload = () => {
     if (saved) {
         inputs.forEach((ele, i) => {
             ele.innerHTML = saved[i];
-            check(ele);
+        });
+        inputs.forEach((ele) => {
+            checkMistake(ele);
         });
     }
-    for (let i = 1; i <= 9; i++) {
-        checkAllNumI(i);
-    }
+    AllNums()
 
 };
 
 inputs.forEach((ele) => {
+
     if (!ele.classList.contains("default")) ele.innerHTML = "";
+
     ele.addEventListener("click", (e) => {
         if (ele.classList.contains("default")) return;
+
         if (ele.classList.contains("clicked")) {
             ele.classList.remove("clicked");
             ele.innerHTML = ""
-            inputs.forEach(el => el.classList.remove("completedBg", "completed"));
-            for (let i = 1; i <= 9; i++) {
-                checkAllNumI(i);
-            }
             inputs.forEach(el => {
-                el.classList.remove("mistake")
-                check(el)
+                el.classList.remove("completedBg");
+                el.classList.remove("mistake");
+                checkMistake(el);
+                el.classList.remove("row-coulmn");
             });
-            let data = [];
-            inputs.forEach(el => data.push(el.innerHTML.trim()));
-            inputs.forEach((ele) => ele.classList.remove("row-coulmn"));
-            localStorage.setItem("sudoku_save", JSON.stringify(data));
+            AllNums();
+            saveGame()
 
         } else {
             inputs.forEach((ele) => {
                 ele.classList.remove("clicked");
-            });
-            inputs.forEach((ele) => {
                 ele.classList.remove("row-coulmn");
             });
             ele.classList.add("clicked");
             addRowCoulmn(ele)
-            function addRowCoulmn(theEle) {
-                let theEleRow = document.querySelectorAll(`.${theEle.classList.item(1)}`)
-                let theElecol = document.querySelectorAll(`.${theEle.classList.item(2)}`)
-                theEleRow.forEach(el => {
-                    el.classList.add("row-coulmn")
-                })
-                theElecol.forEach(el => {
-                    el.classList.add("row-coulmn")
-                })
-                theEle.classList.remove("row-coulmn")
-            }
         }
     });
-
-    check(ele)
+    checkMistake(ele)
 });
 
 let nums = document.querySelectorAll(".num");
+
 nums.forEach((ele) => {
     ele.addEventListener("click", (e) => {
         let selected = document.querySelector(".clicked");
         if (!selected) return;
+
         selected.innerHTML = ele.innerHTML.trim();
-        inputs.forEach(el => el.classList.remove("mistake"));
-        inputs.forEach((element) => {
-            element.classList.remove("clicked")
-            check(element)
+        inputs.forEach(ele => {
+            ele.classList.remove("mistake")
+            ele.classList.remove("clicked")
+            checkMistake(ele)
         });
 
-        let data = [];
-        inputs.forEach(el => data.push(el.innerHTML.trim()));
-        localStorage.setItem("sudoku_save", JSON.stringify(data));
-        inputs.forEach(el => el.classList.remove("completedBg", "completed"));
-        for (let i = 1; i <= 9; i++) {
-            checkAllNumI(i)
-        }
+        inputs.forEach(el => {
+            el.classList.remove("completedBg")
+        });
+
+        saveGame()
+        AllNums()
         youWin()
     });
 });
 
-function check(theEle) {
+document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("inputs")) {
+        inputs.forEach((ele) => {
+            if (ele.classList.contains("clicked")) ele.classList.remove("clicked")
+            if (ele.classList.contains("row-coulmn")) ele.classList.remove("row-coulmn")
+        })
+    }
+})
+
+function addRowCoulmn(theEle) {
+    let theEleRow = document.querySelectorAll(`.${theEle.classList.item(1)}`)
+    let theElecol = document.querySelectorAll(`.${theEle.classList.item(2)}`)
+    theEleRow.forEach(el => {
+        el.classList.add("row-coulmn")
+    })
+    theElecol.forEach(el => {
+        el.classList.add("row-coulmn")
+    })
+    theEle.classList.remove("row-coulmn")
+}
+
+function checkMistake(theEle) {
     let content = theEle.innerHTML.trim();
     if (content === "") return;
-    let eleRow = document.querySelectorAll(`.${theEle.classList.item(1)}`)
-    let eleCol = document.querySelectorAll(`.${theEle.classList.item(2)}`)
-    let eleTab = theEle.parentElement.parentElement;
-    for (let i = 0; i < eleRow.length; i++) {
-        if (theEle !== eleRow[i] && content === eleRow[i].innerHTML.trim()) {
-            theEle.classList.add("mistake");
-        }
-    }
-    for (let i = 0; i < eleCol.length; i++) {
-        if (theEle !== eleCol[i] && content === eleCol[i].innerHTML.trim()) {
-            theEle.classList.add("mistake");
-        }
-    }
-    let eleTabinputs = eleTab.querySelectorAll(`.inputs`)
-    for (let i = 0; i < eleTabinputs.length; i++) {
-        if (theEle !== eleTabinputs[i] && content === eleTabinputs[i].innerHTML.trim()) {
-            theEle.classList.add("mistake");
-        }
-    }
+    let checkArray = [
+        document.querySelectorAll(`.${theEle.classList.item(1)}`),
+        document.querySelectorAll(`.${theEle.classList.item(2)}`),
+        theEle.parentElement.parentElement.querySelectorAll(".inputs")
+    ]
+
+    checkArray.forEach(array => {
+        array.forEach(ele => {
+            if (theEle !== ele && content === ele.innerHTML.trim()) theEle.classList.add("mistake");
+        })
+    })
+
 }
 
 function youWin() {
@@ -125,20 +124,6 @@ function youWin() {
     }
 }
 
-
-document.addEventListener("click", (e) => {
-    if (!e.target.classList.contains("inputs")) {
-        inputs.forEach((ele) => {
-            if (ele.classList.contains("clicked")) {
-                ele.classList.remove("clicked")
-            }
-            if (ele.classList.contains("row-coulmn")) {
-                ele.classList.remove("row-coulmn");
-            }
-        })
-    }
-})
-
 function checkAllNumI(theNumber) {
     let theTab = document.querySelectorAll(".table-container");
     let allHave = [];
@@ -147,20 +132,29 @@ function checkAllNumI(theNumber) {
         for (let i = 0; i < tabInp.length; i++) {
             if (tabInp[i].innerHTML == theNumber && !tabInp[i].classList.contains("mistake")) {
                 allHave.push("have");
-                break
+                break;
             }
         }
     })
-    if (allHave.length === theTab.length) {
-        inputs.forEach(ele => {
-            if (ele.innerHTML == theNumber) ele.classList.add("completed")
-            if (ele.classList.contains("completed") && ele.innerHTML == theNumber) {
-                ele.classList.add("completedBg")
-            }
-        })
+    if (allHave.length === theTab.length) inputs.forEach(ele => {
+        if (ele.innerHTML == theNumber) ele.classList.add("completedBg")
+    })
+
+}
+
+function AllNums() {
+    for (let i = 1; i <= 9; i++) {
+        checkAllNumI(i)
     }
 }
 
+function saveGame() {
+    let data = [];
+    inputs.forEach(ele => {
+        data.push(ele.innerHTML.trim())
+    })
+    localStorage.setItem("sudoku_save", JSON.stringify(data));
+}
 
 document.getElementById("rst").onclick = () => {
     localStorage.removeItem("sudoku_save");
